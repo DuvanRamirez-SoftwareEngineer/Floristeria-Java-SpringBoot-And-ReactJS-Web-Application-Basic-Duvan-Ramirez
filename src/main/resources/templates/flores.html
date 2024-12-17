@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Flores</title>
+    <!-- Enlace a Bootstrap para estilos CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Fragmento de Thymeleaf para incluir contenido común -->
+    <div th:replace="~{layout :: content}">
+    </div>
+    <div class="container">
+        <h2>Lista de Flores</h2>
+        <!-- Tabla para mostrar la lista de flores -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iteración sobre la lista de flores proporcionada por el modelo -->
+                <tr th:each="flor : ${flores}">
+                    <!-- Mostrar el ID de la flor -->
+                    <td th:text="${flor.id}"></td>
+                    <!-- Mostrar el nombre de la flor -->
+                    <td th:text="${flor.nombre}"></td>
+                    <!-- Mostrar el precio de la flor -->
+                    <td th:text="${flor.precio}"></td>
+                    <!-- Mostrar la imagen de la flor -->
+                    <td>
+                        <!-- Ruta de la imagen generada dinámicamente usando Thymeleaf -->
+                        <img th:src="@{${flor.imagePath}}" alt="Imagen de la flor" style="max-height: 100px; max-width: 100px;"/>
+                    </td>
+                    <!-- Mostrar la ruta de la imagen como texto para depuración -->
+                    <span th:text="${flor.imagePath}"></span> <br>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Mostrar un mensaje si está presente en el modelo -->
+        <div th:if="${message}">
+            <h2 th:text="${message}"></h2>
+        </div>
+    </div>
+        
+</div>
+    
+<!-- Enlaces a los scripts de Bootstrap y Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+</body>
+</html>

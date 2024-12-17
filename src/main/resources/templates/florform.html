@@ -1,0 +1,62 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Captura de Flor</title>
+    <!-- Enlace a Bootstrap para estilos CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilo para centrar el contenedor del formulario */
+        .centered-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Fragmento de Thymeleaf para incluir contenido común -->
+    <div th:replace="~{layout :: content}"></div> 
+    <!-- Contenedor central para el formulario -->
+    <div class="centered-form">
+        <div class="form-container">
+            <h2>Captura de Flor</h2>
+            <!-- Formulario para capturar los datos de la flor -->
+            <form th:action="@{/flores/guardar}" th:object="${flor}" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <!-- Etiqueta y campo para el nombre de la flor -->
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" placeholder="Ingrese el nombre de la flor" required>
+                </div>
+                <div class="form-group">
+                    <!-- Etiqueta y campo para el precio de la flor -->
+                    <label for="precio">Precio</label>
+                    <input type="number" class="form-control" id="precio" name="precio" th:field="*{precio}" placeholder="Ingrese el precio de la flor" required>
+                </div>
+                <div class="form-group">
+                    <!-- Etiqueta y campo para subir una imagen de la flor -->
+                    <label for="file">Subir Imagen</label>
+                    <input type="file" class="form-control" id="file" name="file" />
+                </div>
+                <!-- Botón para enviar el formulario -->
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+            <!-- Mostrar un mensaje si está presente en el modelo -->
+            <div th:if="${message}">
+                <h2 th:text="${message}"></h2>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

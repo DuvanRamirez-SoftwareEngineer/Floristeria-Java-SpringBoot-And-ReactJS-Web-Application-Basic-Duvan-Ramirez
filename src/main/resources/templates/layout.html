@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Floristeria</title>
+    <!-- Enlace a Bootstrap para estilos CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="content">
+        <!-- Marca de la barra de navegación -->
+        <a class="navbar-brand" href="#">Floristeria</a>
+        <!-- Botón para colapsar la barra de navegación en pantallas pequeñas -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Contenido de la barra de navegación colapsable -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <!-- Enlace a la página de inicio -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Inicio</a>
+                </li>
+                <!-- Enlace a la página de agregar una nueva flor -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/flores/form}">Agregar Flor</a>
+                </li>
+                <!-- Enlace a la lista de flores -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/flores/listar}">Lista de Flores</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Enlaces a los scripts de Bootstrap y Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
